@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Date;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
@@ -20,6 +21,7 @@ public class IndexController {
     public String index(Model model) {
     	if(postRepository.save( new Post(1, "This is first POST!!!!",  new Date())) != null) {
     		model.addAttribute("status", "Value inserted in MySQL Database");
+            logger.log(Level.INFO, "Data successfully saved in DB");
     	}
     	 	
         return "index";
