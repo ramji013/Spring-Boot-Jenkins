@@ -1,0 +1,13 @@
+version: '3'
+services:
+	product-service:
+	   build: ./
+	   volumes:
+	      - ./:/com/docker/assignment
+	   ports:
+          - 5020:5010
+	web:
+		image: nginx
+
+	database:
+		imaage: mysql

@@ -19,8 +19,10 @@ public class IndexController {
     @SuppressWarnings("unchecked")
 	@GetMapping("/")
     public String index(Model model) {
-    	if(postRepository.save( new Post(1, "This is first POST!!!!",  new Date())) != null) {
+    	if(postRepository.save( new Post(1, "This is first POST!!!!",  new Date())) != null
+                 && (postRepository.save( new Post(2, "This is first POST!!!!",  new Date())) != null)) {
     		model.addAttribute("status", "Value inserted in MySQL Database");
+            model.addAttribute("newfeature", "I am running from Docker");
             logger.log(Level.INFO, "Data successfully saved in DB");
     	}
     	 	
